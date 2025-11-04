@@ -7,14 +7,13 @@ metadata:
 spec:
   affinity:
     nodeAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 1
-        preference:
-          matchExpressions:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
           - key: hardware
             operator: NotIn
             values:
-            - gpu         
+            - gpu            
   containers:
   - name: nginx
     image: nginx
